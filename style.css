@@ -193,7 +193,7 @@ span {
 /* Project Section Styles */
 .project {
     padding: 80px 0;
-    background-color: #a63f6126; 
+    background-color: #a63f6126;
 }
 
 .project .heading {
@@ -211,13 +211,15 @@ span {
 }
 
 .project-box {
+    position: relative;
     width: 300px;
     margin: 20px;
-    background-color: #fff; 
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 450px; /* Fixed height for consistency */
 }
 
 .project-box:hover {
@@ -225,15 +227,54 @@ span {
     box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
 }
 
-.project-box img {
+.content-wrapper {
+    position: relative;
     width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0; 
+    height: 200px; /* Height for the image/video area */
+    overflow: hidden;
 }
 
-.project-box .project-layer {
-    padding: 20px;
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: opacity 0.5s ease;
 }
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 10;
+}
+
+.project-video {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.project-box.show-video .project-img {
+    display: none;
+}
+
+.project-box.show-video .video-container {
+    display: block;
+}
+
+.project-layer {
+    padding: 20px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* optional, if you want to clip excess */
+}
+
 
 .project-box h4 {
     margin-top: 0;
@@ -244,32 +285,64 @@ span {
 
 .project-box p {
     margin: 0;
-    color: #666; 
+    color: #666;
+    font-size: 14px;
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
-.project-box i {
-    font-size: 24px;
-    color: #333; 
-    float: right;
-}
-
-.github-link {
+/* Project links styling */
+.project-links {
     display: flex;
-    align-items: center;
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    justify-content: space-between;
+    gap: 12px; /* Optional: adds spacing if more than 2 buttons */
+    margin-top: 15px;
 }
 
-.github-link i {
+.project-btn {
+    flex: 1; /* Make buttons equal width */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.project-btn i {
     margin-right: 8px;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+/* GitHub Button */
+.github-link {
+    background: linear-gradient(145deg, #f1f1f1, #ffffff);
+    color: #24292e;
+    border: 1px solid #d1d5da;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
 .github-link:hover {
-    color: #4078c0;
+    background: #24292e;
+    color: #fff;
+    border-color: #24292e;
+}
+
+/* Video Button (assuming a .video-link class) */
+.video-link {
+    background: linear-gradient(145deg, #4f46e5, #6366f1); /* Indigo shades */
+    color: #fff;
+    border: 1px solid transparent;
+}
+
+.video-link:hover {
+    background: #4338ca;
+    color: #fff;
 }
 
 

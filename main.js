@@ -54,3 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
     ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all video links
+    const videoLinks = document.querySelectorAll('.video-link');
+    
+    // Add click event listener to each video link
+    videoLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get the parent project box
+            const projectBox = this.closest('.project-box');
+            
+            // Get the iframe in this project box
+            const iframe = projectBox.querySelector('iframe');
+            
+            // Set the iframe src to the data-src value (this loads the video)
+            iframe.src = iframe.getAttribute('data-src');
+            
+            // Add a class to show the video
+            projectBox.classList.add('show-video');
+            
+            // Create a back button if it doesn't exist
+            if (!projectBox.querySelector('.back-btn')) {
+                const backBtn = document.createElement('button');
+                backBtn.className = 'back-btn';
+                backBtn.innerHTML = '<i class="fas fa-times"></i>';
+                
+                // Add click event to the back button
+                backBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // Stop the video by removing the src
+                    iframe.src = '';
+                    
+                    // Hide the video
+                    projectBox.classList.remove('show-video');
+                });
+                
+                // Append the back button to the content wrapper
+                projectBox.querySelector('.content-wrapper').appendChild(backBtn);
+            }
+        });
+    });
+});

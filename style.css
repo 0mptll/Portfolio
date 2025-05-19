@@ -191,6 +191,7 @@ span {
 }
 
 /* Project Section Styles */
+/* Project Section Styles - Updated with Video Player */
 .project {
     padding: 80px 0;
     background-color: #a63f6126;
@@ -343,6 +344,58 @@ span {
 .video-link:hover {
     background: #4338ca;
     color: #fff;
+}
+
+
+/* .video-link {
+    background: var(--main-color);
+    color: #fff;
+}
+
+.video-link:hover {
+    background: #8a3651; /* Darker shade of your main color */
+/* } */ 
+
+/* Back button for video */
+.back-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 16px;
+}
+
+.project-box.show-video .back-btn {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .project-box {
+        width: 90%;
+        max-width: 350px;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .project-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 
@@ -585,6 +638,7 @@ span {
         width: 100%;
     }
 }
+
 /* Add this to your existing CSS file */
 
 .skills {
